@@ -51,8 +51,14 @@ class MainActivity : AppCompatActivity() {
         editNumberInput.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 if (!s.isNullOrBlank()) {
-                    textDisplayFizzBuzz.text = doFizzBuzz(Integer.parseInt(s.toString()))
+                    val numberInput = Integer.parseInt(s.toString())
+                    // Update slider
+                    sliderNumberInput.progress = numberInput
+                    // Update FizzBuzz display
+                    textDisplayFizzBuzz.text = doFizzBuzz(numberInput)
                 }
+                // Keep cursor to the right of input value
+                editNumberInput.setSelection(editNumberInput.text.length)
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -69,7 +75,9 @@ class MainActivity : AppCompatActivity() {
     private fun updateTextFromSlider() {
         sliderNumberInput.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                // updated continuously as the user slides their thumb
+                // Update EditText
+                editNumberInput.setText(progress.toString(), TextView.BufferType.EDITABLE)
+                // Update FizzBuzz display
                 textDisplayFizzBuzz.text = doFizzBuzz(progress)
             }
 
