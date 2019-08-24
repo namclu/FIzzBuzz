@@ -20,6 +20,7 @@
             android:layout_marginTop="16dp"
             android:hint="@string/hint_enter_number"
             android:inputType="number"
+            android:gravity="center_horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
