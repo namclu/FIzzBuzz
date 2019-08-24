@@ -2,6 +2,8 @@ package com.namlu.fizzbuzz
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.EditText
 import android.widget.SeekBar
 import android.widget.TextView
@@ -20,9 +22,7 @@ class MainActivity : AppCompatActivity() {
         sliderNumberInput = findViewById(R.id.seek_number_input)
         textDisplayFizzBuzz = findViewById(R.id.text_display_fizz_buzz)
 
-        // Read editText value and update FizzBuzz text
-
-        // Read slider value and update FizzBuzz text
+        updateTextFromEditText()
         updateTextFromSlider()
     }
 
@@ -46,13 +46,31 @@ class MainActivity : AppCompatActivity() {
         return resultString
     }
 
+    // Read editText value and update FizzBuzz text
+    private fun updateTextFromEditText() {
+        editNumberInput.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                if (!s.isNullOrBlank()) {
+                    textDisplayFizzBuzz.text = doFizzBuzz(Integer.parseInt(s.toString()))
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+        })
+    }
+
+    // Read slider value and update FizzBuzz text
     private fun updateTextFromSlider() {
         sliderNumberInput.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 // updated continuously as the user slides their thumb
-                val fizzBuzzText = doFizzBuzz(progress)
-                editNumberInput.setText(progress.toString(), TextView.BufferType.EDITABLE)
-                textDisplayFizzBuzz.text = fizzBuzzText
+                textDisplayFizzBuzz.text = doFizzBuzz(progress)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
