@@ -16,21 +16,24 @@ class FizzBuzzViewModel : ViewModel() {
     val textDisplayFizzBuzz: LiveData<String>
         get() = _textDisplayFizzBuzz
 
-
-    fun calculateFizzBuzz() {
-        val newInput = editNumberInput.value?.toIntOrNull() ?: 0
-        doFizzBuzz(newInput)
+    // Figure out FizzBuzz text
+    private fun calculateFizzBuzzText(input: Int): String {
+        return when {
+            input % 15 == 0 -> "FizzBuzz"
+            input % 3 == 0 -> "Fizz"
+            input % 5 == 0 -> "Buzz"
+            else -> input.toString()
+        }
     }
 
-    // Figure out FizzBuzz text
-    private fun doFizzBuzz(numberInput: Int) {
-        if (numberInput % 3 == 0 && numberInput % 5 == 0) {
-            _textDisplayFizzBuzz.value = "FizzBuzz"
-        } else if (numberInput % 3 == 0) {
-            _textDisplayFizzBuzz.value = "Fizz"
-        } else if (numberInput % 5 == 0) {
-            _textDisplayFizzBuzz.value = "Buzz"
-        } else
-            _textDisplayFizzBuzz.value = numberInput.toString()
+    // Set FizzBuzz text
+    fun setFizzBuzzText() {
+        val input = editNumberInput.value?.toIntOrNull() ?: 0
+        _textDisplayFizzBuzz.value = calculateFizzBuzzText(input)
+    }
+
+    // Helper method to generate a sequence for testing
+    fun generateSequence(size: Int): List<String> {
+        return (1..size).map { calculateFizzBuzzText(it) }
     }
 }

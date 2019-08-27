@@ -27,12 +27,11 @@ class MainActivity : AppCompatActivity() {
         viewModel.editNumberInput.observe(this, Observer {
             binding.seekNumberInput.progress = it.toIntOrNull() ?: 0
             binding.editNumberInput.setSelection(it.length)
-            viewModel.calculateFizzBuzz()
+            viewModel.setFizzBuzzText()
         })
 
         updateTextFromSlider()
     }
-
 
     // Read slider value and update FizzBuzz text
     private fun updateTextFromSlider() {
@@ -49,7 +48,6 @@ class MainActivity : AppCompatActivity() {
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
                 // called after the user finishes moving the SeekBar
             }
-
         })
     }
 }
