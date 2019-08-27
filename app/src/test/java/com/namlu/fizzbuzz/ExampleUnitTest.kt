@@ -13,7 +13,7 @@ import com.namlu.fizzbuzz.FizzBuzzViewModel.Companion.FIZZ_BUZZ
  */
 class ExampleUnitTest {
     @Test
-    fun initial_fizz_test() {
+    fun small_sequence_should_return_fizz() {
         // ARRANGE
         val fizzBuzz = FizzBuzzViewModel()
 
@@ -25,7 +25,7 @@ class ExampleUnitTest {
     }
 
     @Test
-    fun full_fizz_buzz_sequence_test() {
+    fun large_sequence_should_return_fizz_buzz() {
         // ARRANGE
         val fizzBuzz = FizzBuzzViewModel()
 
