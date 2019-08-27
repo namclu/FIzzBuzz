@@ -36,3 +36,7 @@ on top of it.)
 * Onscreen Numeric Keyboard
 
 ## Screenshots
+Image 1 | Image 2 | Image 3
+------------ | ------------- | -------------
+<img src="/images/Screenshot_1566945359.png" width="280" height="480"> | <img src="/images/Screenshot_1566945384.png" width="280" height="480"> | <img src="/images/Screenshot_1566945393.png" width="280" height="480">
+Multiple of 3, show "Fizz" | Multiple of 3 and 5, show "FizzBuzz" | Else show the value
