@@ -4,4 +4,5 @@
     <string name="label_slider_min">0</string>
     <string name="label_slider_max">1000</string>
     <string name="hint_enter_number">Enter #</string>
+    <string name="text_placeholder_fizzbuzz">FizzBuzz text</string>
 </resources>
